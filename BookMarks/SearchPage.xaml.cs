@@ -16,16 +16,24 @@ using System.Windows.Shapes;
 namespace BookMarks
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SearchPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SearchPage : Page
     {
-
-        public MainWindow()
+        public SearchPage()
         {
             InitializeComponent();
 
-            MainFrame.Navigate(new BeginPage());
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
     }
 }

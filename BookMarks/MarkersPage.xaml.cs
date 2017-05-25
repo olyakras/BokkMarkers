@@ -16,16 +16,18 @@ using System.Windows.Shapes;
 namespace BookMarks
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MarkersPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MarkersPage : Page
     {
-
-        public MainWindow()
+        public MarkersPage()
         {
             InitializeComponent();
+        }
 
-            MainFrame.Navigate(new BeginPage());
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
     }
 }
