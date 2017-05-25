@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace BookMarks
 {
@@ -86,7 +87,7 @@ namespace BookMarks
             else
             {
                 Person _newPerson = new Person(loginTextBlock.Text,
-                    passwordTextBlock.Text);
+                    CalculateHash(passwordTextBlock.Text));
                 data.People.Add(_newPerson);
                 data.People.Sort(delegate (Person _p1, Person _p2)
                 { return _p1.Login.CompareTo(_p2.Login); });
@@ -99,6 +100,13 @@ namespace BookMarks
                 }
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
+        }
+
+        private string CalculateHash(string password)
+        {
+            MD5 md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Convert.ToBase64String(hash);
         }
 
         private void Page_PreviewKeyDown(object sender, KeyEventArgs e)

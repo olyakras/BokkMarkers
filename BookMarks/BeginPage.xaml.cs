@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace BookMarks
 {
@@ -61,17 +62,13 @@ namespace BookMarks
             {
                 _people.Add(new Person("admin", "1"));
             }
-            catch (NullReferenceException)
-            {
-                _people.Add(new Person("admin", "1"));
-            }
             bool _fl2 = false;
 
             foreach (var person in _people)
             {
                 if (person.Login == loginTextBox.Text)
                 {
-                    if (person.Password == passwordTextBox.Text)
+                    if (person.Password == CalculateHash(passwordTextBox.Text))
                     {
                         _fl2 = true;
                         break;
@@ -81,6 +78,13 @@ namespace BookMarks
 
             if (_fl2) NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             else MessageBox.Show("Неверный логин или пароль");
+        }
+
+        private string CalculateHash(string password)
+        {
+            MD5 md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Convert.ToBase64String(hash);
         }
 
         private void signUpButton_Click(object sender, RoutedEventArgs e)

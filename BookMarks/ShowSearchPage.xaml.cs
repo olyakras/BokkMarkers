@@ -50,7 +50,10 @@ namespace BookMarks
                 foreach(var _book in _books)
                 {
                     if (_num == _book.Title)
+                    {
                         _searchBooks.Add(_book);
+                        showResultListBox.Items.Add(_book);
+                    }
                 }
             }
             else
@@ -61,7 +64,10 @@ namespace BookMarks
                     foreach (var _book in _books)
                     {
                         if (_num == _book.Autor)
+                        {
                             _searchBooks.Add(_book);
+                            showResultListBox.Items.Add(_book);
+                        }
                     }
                 }
                 else
@@ -70,8 +76,11 @@ namespace BookMarks
                     string _title = sr.ReadLine();
                     foreach (var _book in _books)
                     {
-                        if (_num == _book.Autor && _title== _book.Title)
+                        if (_num == _book.Autor && _title == _book.Title)
+                        {
                             _searchBooks.Add(_book);
+                            showResultListBox.Items.Add(_book);
+                        }
                     }
                 }
             }

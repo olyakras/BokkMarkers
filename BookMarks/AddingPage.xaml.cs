@@ -22,10 +22,23 @@ namespace BookMarks
     /// </summary>
     public partial class AddingPage : Page
     {
+        List<Genres> _genres = new List<Genres>;
         public AddingPage()
         {
             InitializeComponent();
+            LoadGenre();
+            genreComboBox.ItemsSource = _genres;
         }
+
+        private void LoadGenre()
+        {
+            XmlSerializer xml = new XmlSerializer(typeof(List<Genres>));
+            using (var fs = new FileStream("genres.xml", FileMode.Open))
+            {
+                _genres = (List<Genres>)xml.Deserialize(fs);
+            }
+        }
+
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +69,7 @@ namespace BookMarks
                 return;
             }
 
-            Data data = null;
+            Data data = new Data();
             using (var fs = new FileStream("books.xml", FileMode.OpenOrCreate))
             {
                     XmlSerializer xml = new XmlSerializer(typeof(Data));
