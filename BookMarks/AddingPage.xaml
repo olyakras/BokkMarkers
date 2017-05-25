@@ -9,8 +9,36 @@
       Title="AddingPage" Background="#FFBED3A1">
 
     <Grid x:Name="addingPage1">
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
-        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="addButton_Click"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="addButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <TextBlock x:Name="autorTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top" Margin="93,10,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="autorTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,39,0,0" FontSize="18" FontFamily="Stencil" SpellCheck.IsEnabled="True"/>
         <TextBlock x:Name="titleBookTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Margin="93,95,0,0" FontFamily="Stencil" FontSize="20" Width="320" TextAlignment="Center"/>

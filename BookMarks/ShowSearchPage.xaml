@@ -10,7 +10,35 @@
 
     <Grid>
         <ListBox x:Name="showResultListBox" HorizontalAlignment="Left" Height="223" VerticalAlignment="Top" Width="499" Margin="10,10,0,0"/>
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="10,252,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
-        <Button x:Name="addMarkButton" Content="Add Mark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="349,252,0,0" Height="40" FontSize="20" FontFamily="Stencil"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="10,252,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="addMarkButton" Content="Add Mark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="349,252,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="addMarkButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Page>

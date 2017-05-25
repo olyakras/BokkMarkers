@@ -9,8 +9,36 @@
       Title="RegisterPage" Background="#FFBED3A1">
 
     <Grid x:Name="registerPage">
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
-        <Button x:Name="signUpButton" Content="Sign UP" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="signUpButton_Click"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="signUpButton" Content="Sign UP" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="signUpButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <TextBlock x:Name="loginTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Margin="93,10,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,39,0,0" FontSize="18" FontFamily="Stencil" SpellCheck.IsEnabled="True"/>
         <TextBlock x:Name="passwordTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Margin="93,95,0,0" RenderTransformOrigin="0.572,-1.739" FontFamily="Stencil" FontSize="20" Width="320" TextAlignment="Center"/>

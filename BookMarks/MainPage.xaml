@@ -9,9 +9,51 @@
       Title="MainPage" Background="#FFBED3A1">
 
     <Grid x:Name="mainPage">
-        <Button x:Name="showAllButton" Content="Show all books" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,68,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="showAllButton_Click"/>
-        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,127,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="searchButton_Click" />
-        <Button x:Name="showMarksButton" Content="Show bookmarkers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,189,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="showMarksButton_Click"/>
+        <Button x:Name="showAllButton" Content="Show all books" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,68,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="showAllButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,127,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="searchButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="showMarksButton" Content="Show bookmarkers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="153,189,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="showMarksButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Style.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF6454FF" />
+                            <Setter Property="Control.FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Control.Foreground" Value="#FF2735C1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Page>

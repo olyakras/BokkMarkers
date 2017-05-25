@@ -68,5 +68,23 @@ namespace BookMarks
                 }
             }
         }
+
+        private void deleteMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (markBooksListBox.SelectedIndex != -1)
+            {
+                List<Book> _bookmarkers = new List<Book>();
+                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    _bookmarkers = (List<Book>)xml.Deserialize(fs);
+                }
+                _bookmarkers.Remove((Book)markBooksListBox.SelectedItem);
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    xml.Serialize(fs, _bookmarkers);
+                }
+            }
+        }
     }
 }

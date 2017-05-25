@@ -91,6 +91,24 @@ namespace BookMarks
             NavigationService.Navigate(new Uri("/SearchPage.xaml", UriKind.Relative));
         }
 
-
+        private void addMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (showResultListBox.SelectedIndex != -1)
+            {
+                List<Book> _bookmarkers = new List<Book>();
+                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    _bookmarkers = (List<Book>)xml.Deserialize(fs);
+                }
+                _bookmarkers.Add((Book)showResultListBox.SelectedItem);
+                _bookmarkers.Sort(delegate (Book _b1, Book _b2)
+                { return _b1.Autor.CompareTo(_b2.Autor); });
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    xml.Serialize(fs, _bookmarkers);
+                }
+            }
+        }
     }
 }
