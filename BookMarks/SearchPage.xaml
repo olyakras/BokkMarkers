@@ -9,13 +9,11 @@
       Title="SearchPage" Background="#FFBED3A1">
 
     <Grid x:Name="searchPage">
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
-        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,255,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="searchButton_Click"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="93,229,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="313,229,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="searchButton_Click"/>
         <TextBlock x:Name="autorTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top" Margin="93,10,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="autorTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,39,0,0" FontSize="18" FontFamily="Stencil" SpellCheck.IsEnabled="True"/>
         <TextBlock x:Name="titleBookTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Margin="93,95,0,0" RenderTransformOrigin="0.572,-1.739" FontFamily="Stencil" FontSize="20" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="titleBookTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,124,0,0" FontSize="18" FontFamily="Stencil"/>
-        <TextBlock x:Name="genreTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" Margin="93,178,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
-        <ComboBox x:Name="genreComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="320" Margin="93,207,0,0" Height="37"/>
     </Grid>
 </Page>

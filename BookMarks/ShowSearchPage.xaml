@@ -1,0 +1,16 @@
+﻿<Page x:Name="showResult" x:Class="BookMarks.ShowSearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookMarks"
+      mc:Ignorable="d" 
+      d:DesignHeight="317" d:DesignWidth="519"
+      Title="ShowSearchPage" Background="#FFBED3A1">
+
+    <Grid>
+        <ListBox x:Name="showResultListBox" HorizontalAlignment="Left" Height="223" VerticalAlignment="Top" Width="499" Margin="10,10,0,0"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="10,252,0,0" Height="40" FontSize="20" FontFamily="Stencil" Click="backButton_Click"/>
+        <Button x:Name="addMarkButton" Content="Add Mark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Margin="349,252,0,0" Height="40" FontSize="20" FontFamily="Stencil"/>
+    </Grid>
+</Page>

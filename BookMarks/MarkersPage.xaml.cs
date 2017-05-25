@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace BookMarks
 {
@@ -20,14 +22,51 @@ namespace BookMarks
     /// </summary>
     public partial class MarkersPage : Page
     {
+        List<Book> _bookmarkers = new List<Book>();
         public MarkersPage()
         {
             InitializeComponent();
+            PutOutData();
+            RefreshListBox();
         }
 
+        private void PutOutData()
+        {
+            using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                _bookmarkers = (List<Book>)xml.Deserialize(fs);
+            }
+        }
+
+        private void RefreshListBox()
+        {
+            markBooksListBox.ItemsSource = null;
+            markBooksListBox.ItemsSource = _bookmarkers;
+        }
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+        }
+
+        private void addMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (markBooksListBox.SelectedIndex != -1)
+            {
+                List<Book> _bookmarkers = new List<Book>();
+                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    _bookmarkers = (List<Book>)xml.Deserialize(fs);
+                }
+                _bookmarkers.Add((Book)markBooksListBox.SelectedItem);
+                _bookmarkers.Sort(delegate (Book _b1, Book _b2)
+                { return _b1.Autor.CompareTo(_b2.Autor); });
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    xml.Serialize(fs, _bookmarkers);
+                }
+            }
         }
     }
 }

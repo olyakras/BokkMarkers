@@ -60,8 +60,19 @@ namespace BookMarks
         {
             if (allBooksListBox.SelectedIndex != -1)
             {
-                string _book = (string)allBooksListBox.SelectedItem;
-
+                List<Book> _bookmarkers=new List<Book>();
+                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    _bookmarkers = (List<Book>)xml.Deserialize(fs);
+                }
+                _bookmarkers.Add((Book)allBooksListBox.SelectedItem);
+                _bookmarkers.Sort(delegate (Book _b1, Book _b2)
+                { return _b1.Autor.CompareTo(_b2.Autor); });
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                {
+                    xml.Serialize(fs, _bookmarkers);
+                }
             }
         }
     }
