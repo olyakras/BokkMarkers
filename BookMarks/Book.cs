@@ -3,43 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 
 namespace BookMarks
 {
-    [Serializable]
+    [DataContract]
     class Book
     {
         string _title;
         string _autor;
         Genres _genre;
-        bool _marker;
 
-
+        [DataMember]
         public string Title
         {
             get { return _title;}
             set { _title = value;}
         }
-
+        [DataMember]
         public string Autor
         {
             get { return _autor;}
             set { _autor = value;}
         }
 
-        [XmlIgnore]
+        [DataMember]
         public Genres Genre
         {
             get { return _genre;}
             set { _genre = value;}
         }
 
-        public bool Marker
-        {
-            get { return _marker;}
-            set { _marker = value;}
-        }
+
 
         public string Info
         {
@@ -49,21 +45,20 @@ namespace BookMarks
             }
         }
 
-        public Book (string title, string autor, Genres genre, bool marker)
+        public Book (string title, string autor, Genres genre)
         {
             _title = title;
             _autor = autor;
             _genre = genre;
-            _marker = marker;
 
         }
 
-        public Book(string autor, string title)
+        public Book(string title, string autor)
         {
             _title = title;
             _autor = autor;
             _genre = null;
-            _marker = Marker;
+
         }
 
     }

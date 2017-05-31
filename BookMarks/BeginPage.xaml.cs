@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 using System.IO;
 using System.Security.Cryptography;
 
@@ -43,7 +44,7 @@ namespace BookMarks
                 passwordTextBox.Focus();
                 return;
             }
-            XmlSerializer xml = new XmlSerializer(typeof(List<Person>));
+            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Person>));
             List<Person> _people= new List<Person>();
             bool _fl = false;
             try
@@ -53,7 +54,7 @@ namespace BookMarks
                     {
                         List<Person> _data = new List<Person>();
                         
-                        _data = (List<Person>)xml.Deserialize(fs);
+                        _data = (List<Person>)jsonFormatter.ReadObject(fs);
                         _people = _data;
                     }
                 }

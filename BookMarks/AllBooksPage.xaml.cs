@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
 using System.IO;
 
 namespace BookMarks
@@ -34,8 +34,8 @@ namespace BookMarks
         {
             using (var fs = new FileStream("books.xml", FileMode.OpenOrCreate))
             {
-                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
-                _books= (List<Book>)xml.Deserialize(fs);
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Book>));
+                _books= (List<Book>)jsonFormatter.ReadObject(fs);
             }
         }
 
@@ -61,17 +61,17 @@ namespace BookMarks
             if (allBooksListBox.SelectedIndex != -1)
             {
                 List<Book> _bookmarkers=new List<Book>();
-                XmlSerializer xml = new XmlSerializer(typeof(List<Book>));
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Book>));
                 using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
                 {
-                    _bookmarkers = (List<Book>)xml.Deserialize(fs);
+                    _bookmarkers = (List<Book>)jsonFormatter.ReadObject(fs);
                 }
                 _bookmarkers.Add((Book)allBooksListBox.SelectedItem);
                 _bookmarkers.Sort(delegate (Book _b1, Book _b2)
                 { return _b1.Autor.CompareTo(_b2.Autor); });
-                using (var fs = new FileStream("bookmarkers.xml", FileMode.OpenOrCreate))
+                using (var fs = new FileStream("bookmarkers.xml", FileMode.Create))
                 {
-                    xml.Serialize(fs, _bookmarkers);
+                    jsonFormatter.WriteObject(fs, _bookmarkers);
                 }
             }
         }

@@ -42,7 +42,7 @@
         <TextBlock x:Name="loginTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Margin="93,10,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,39,0,0" FontSize="18" FontFamily="Stencil" SpellCheck.IsEnabled="True"/>
         <TextBlock x:Name="passwordTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Margin="93,95,0,0" RenderTransformOrigin="0.572,-1.739" FontFamily="Stencil" FontSize="20" Width="320" TextAlignment="Center"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,124,0,0" FontSize="18" FontFamily="Stencil"/>
+        <TextBox x:Name="passwordTextBox" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Margin="93,124,106,0" FontSize="18" FontFamily="Stencil"/>
         <TextBlock x:Name="repeatPasTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Repeat Password" VerticalAlignment="Top" Margin="93,178,0,0" FontSize="20" FontFamily="Stencil" Width="320" TextAlignment="Center"/>
         <TextBox x:Name="repeatPasTextBox" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="93,207,0,0" FontSize="18" FontFamily="Stencil"/>
     </Grid>

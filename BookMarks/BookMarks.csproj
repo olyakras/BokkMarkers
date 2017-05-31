@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,16 +66,11 @@
       <DependentUpon>BeginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Book.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="DataPeople.cs" />
     <Compile Include="MarkersPage.xaml.cs">
       <DependentUpon>MarkersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RegisterWindow.xaml.cs">
-      <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -122,10 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegisterWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

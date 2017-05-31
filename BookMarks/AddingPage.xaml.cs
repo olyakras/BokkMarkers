@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
 using System.IO;
 
 namespace BookMarks
@@ -32,10 +32,10 @@ namespace BookMarks
 
         private void LoadGenre()
         {
-            XmlSerializer xml = new XmlSerializer(typeof(List<Genres>));
+            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Genres>));
             using (var fs = new FileStream("genres.xml", FileMode.Open))
             {
-                _genres = (List<Genres>)xml.Deserialize(fs);
+                _genres = (List<Genres>)jsonFormatter.ReadObject(fs);
             }
         }
 
@@ -69,15 +69,15 @@ namespace BookMarks
                 return;
             }
 
-            Data data = new Data();
+            List<Book> _books = new List<Book>();
             using (var fs = new FileStream("books.xml", FileMode.OpenOrCreate))
             {
-                    XmlSerializer xml = new XmlSerializer(typeof(Data));
-                    data = (Data)xml.Deserialize(fs);
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Book>));
+                _books = (List<Book>)jsonFormatter.ReadObject(fs);
             }
 
             bool fl = false;
-            foreach (var book in data.Books)
+            foreach (var book in _books)
             {
                 if (book.Title == titleBookTextBox.Text && book.Autor == autorTextBox.Text)
                 {
@@ -98,15 +98,15 @@ namespace BookMarks
                 Book _newBook = new Book (autorTextBlock.Text,
                     titleBookTextBlock.Text);
                 _newBook.Genre = genreComboBox.SelectedItem as Genres;
-                data.Books.Add(_newBook);
-                data.Books.Sort(delegate (Book _b1, Book _b2)
+                _books.Add(_newBook);
+                _books.Sort(delegate (Book _b1, Book _b2)
                 { return _b1.Autor.CompareTo(_b2.Autor); });
 
                 MessageBox.Show("Книга успешно добавлена");
                 using (var fs = new FileStream("students.xml", FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(Data));
-                    xml.Serialize(fs, data);
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Book>));
+                    jsonFormatter.WriteObject(fs, _books);
                 }
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }

@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 using System.IO;
 using System.Security.Cryptography;
 
@@ -59,17 +60,17 @@ namespace BookMarks
                 return;
             }
 
-            DataPeople data= new DataPeople();
+            List<Person> data = new List<Person>();
             using (var fs = new FileStream("C://Documents//Информатика//person.xml", FileMode.OpenOrCreate))
             {
                     {
-                        XmlSerializer xml = new XmlSerializer(typeof(Data));
-                        data = (DataPeople)xml.Deserialize(fs);
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Person>));
+                        data = (List<Person>)jsonFormatter.ReadObject(fs);
                     }
             }
 
             bool fl = false;
-            foreach (var person in data.People)
+            foreach (var person in data)
             {
                 if (person.Login == loginTextBox.Text)
                 {
@@ -88,15 +89,15 @@ namespace BookMarks
             {
                 Person _newPerson = new Person(loginTextBlock.Text,
                     CalculateHash(passwordTextBlock.Text));
-                data.People.Add(_newPerson);
-                data.People.Sort(delegate (Person _p1, Person _p2)
+                data.Add(_newPerson);
+                data.Sort(delegate (Person _p1, Person _p2)
                 { return _p1.Login.CompareTo(_p2.Login); });
 
                 MessageBox.Show("Регистрация прошла успешна");
                 using (var fs = new FileStream("students.xml", FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(Data));
-                    xml.Serialize(fs, data);
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Person>));
+                    jsonFormatter.WriteObject(fs, data);
                 }
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
